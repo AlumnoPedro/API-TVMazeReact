@@ -10,6 +10,9 @@ function App() {
   return (
     <div className="App">
       <h1>Listado Usuarios</h1>
+      <ul>
+        <li></li>
+      </ul>
     </div>
   )
 }
