@@ -1,20 +1,21 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import { getUsuarios } from './services/usuarios';
+import getShows from './services/shows';
 
 function App() {
-  const [usuarios, setUsuarios] = useState([]);
+  const [shows, setShows] = useState([]);
   useEffect(() => {
-    getUsuarios().then((users) => setUsuarios(users))
+    getShows().then((show) => setShows(show));
   }, []);
   return (
     <div className="App">
       <h1>Listado Usuarios</h1>
       <ul>
+        {shows.map(() => <li>show.id</li>)}
         <li>Hola Pedro</li>
       </ul>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
