@@ -1,0 +1,12 @@
+{
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "env": {
+      "browser":true
+    },
+    "rules": {
+      "linebreak-style":"off"
+    }
+}
