@@ -5,15 +5,18 @@ import getShows from './services/shows';
 function App() {
   const [shows, setShows] = useState([]);
   useEffect(() => {
-    getShows().then((show) => setShows(show));
+    getShows().then((series) => setShows(series));
   }, []);
   return (
     <div className="App">
-      <h1>Listado Usuarios</h1>
-      <ul>
-        {shows.map(() => <li>show.id</li>)}
-        <li>Hola Pedro</li>
-      </ul>
+      <h1>Listado Shows</h1>
+      {shows.map((show) => (
+        <div key={show.id}>
+          <ul>
+            <li>{show.name}</li>
+          </ul>
+        </div>
+      ))}
     </div>
   );
 }
