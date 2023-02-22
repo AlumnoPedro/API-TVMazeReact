@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import getShows from './services/shows';
 import './style.css';
+import SearchBox from './components/SearchBox';
 
 function App() {
+  const [search, setSearch] = useState('');
   const [shows, setShows] = useState([]);
   useEffect(() => {
     getShows().then((series) => setShows(series));
@@ -40,7 +42,10 @@ function App() {
             </li>
           </ul>
           <form className="form-inline my-2 my-lg-0">
-            <input className="form-control mr-sm-2" type="text" placeholder="Search" />
+            <SearchBox
+              placeholder="Búsqueda Series"
+              onSearchChange={(e) => setSearch(e.target.value)}
+            />
             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
