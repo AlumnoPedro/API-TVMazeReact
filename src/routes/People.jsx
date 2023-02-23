@@ -10,6 +10,7 @@ import {
   from '../services/people';
 import '../style.css';
 import SearchBox from '../components/SearchBox';
+import Navbar from '../components/Navbar';
 
 function People() {
   const [search, setSearch] = useState('');
@@ -21,7 +22,12 @@ function People() {
     .includes(search.toLowerCase()));
   return (
     <div>
-      <nav className="navbar navbar-expand-sm navbar-light bg-light w-100">
+      <Navbar />
+      <SearchBox
+        placeholder="Búsqueda People"
+        onSearchChange={(e) => setSearch(e.target.value)}
+      />
+      { /* <nav className="navbar navbar-expand-sm navbar-light bg-light w-100">
         <a className="navbar-brand" href="main.jsx">Navbar</a>
         <button
           className="navbar-toggler d-lg-none"
@@ -43,7 +49,7 @@ function People() {
               <a className="nav-link" href="#">Link</a>
             </li>
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+              <a href="#" id="dropdownId" aria-haspopup="true" aria-expanded="false">Dropdown</a>
               <div className="dropdown-menu" aria-labelledby="dropdownId">
                 <a className="dropdown-item" href="#">Action 1</a>
                 <a className="dropdown-item" href="#">Action 2</a>
@@ -58,7 +64,7 @@ function People() {
             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
-      </nav>
+  </nav> */ }
       <h1 className="text-center">Listado People</h1>
       <div className="row">
         <div className="col-md-6">
