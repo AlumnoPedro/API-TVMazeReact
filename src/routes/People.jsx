@@ -1,6 +1,13 @@
+import {
+  NavLink,
+} from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import getPeople from '../services/people';
+import {
+  getPeople,
+  getPerson,
+}
+  from '../services/people';
 import '../style.css';
 import SearchBox from '../components/SearchBox';
 
@@ -53,14 +60,30 @@ function People() {
         </div>
       </nav>
       <h1 className="text-center">Listado People</h1>
-      {filterPeople.map((person) => (
-        <div key={person.id} className="row">
-          <div className="col-md-6">
-            <ul className="lista text-center">
-              <li className="li__body">{person.name}</li>
-            </ul>
-          </div>
-          {/* <div className="col-md-6">
+      <div className="row">
+        <div className="col-md-6">
+          <ul className="lista text-center">
+            {filterPeople.map((person) => (
+              <li key={person.id} className="li__body">
+                <NavLink
+                  to={`people/${person.id}`}
+                >
+                  {person.name ? (
+                    <>
+                      {person.name}
+                      {' '}
+                      {person.id}
+                    </>
+                  ) : (
+                    <i>No Name</i>
+                  )}
+                  {' '}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+        { /* <div className="col-md-6">
             <div className="cards">
               <img src={show.image != null ? show.image.original : './img/no-image.jpg'} alt="" />
               <div className="card-body">
@@ -71,11 +94,21 @@ function People() {
                 <a href="./episodios.html?id={show.id}"><h5 className="card-title">Ver</h5></a>
               </div>
             </div>
-          </div> */}
-        </div>
-      ))}
+          </div> */ }
+      </div>
     </div>
   );
+}
+
+export async function loader({ params }) {
+  const person = await getPerson(params.personId);
+  if (!person) {
+    throw new Response('', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+  return person;
 }
 
 export default People;
