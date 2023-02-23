@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import getShows from './services/shows';
-import './style.css';
-import SearchBox from './components/SearchBox';
+import getPeople from '../services/people';
+import '../style.css';
+import SearchBox from '../components/SearchBox';
 
-function App() {
+function People() {
   const [search, setSearch] = useState('');
-  const [shows, setShows] = useState([]);
+  const [people, setPeople] = useState([]);
   useEffect(() => {
-    getShows().then((series) => setShows(series));
+    getPeople().then((personas) => setPeople(personas));
   }, []);
-  const filterShow = shows.filter((show) => show.name.toLowerCase().includes(search.toLowerCase()))
+  const filterPeople = people.filter((person) => person.name.toLowerCase()
+    .includes(search.toLowerCase()));
   return (
     <div>
       <nav className="navbar navbar-expand-sm navbar-light bg-light w-100">
@@ -44,19 +45,19 @@ function App() {
           </ul>
           <form className="form-inline my-2 my-lg-0">
             <SearchBox
-              placeholder="Búsqueda Series"
+              placeholder="Búsqueda People"
               onSearchChange={(e) => setSearch(e.target.value)}
             />
             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
       </nav>
-      <h1 className="text-center">Listado Shows</h1>
-      {filterShow.map((show) => (
-        <div key={show.id} className="row">
+      <h1 className="text-center">Listado People</h1>
+      {filterPeople.map((person) => (
+        <div key={person.id} className="row">
           <div className="col-md-6">
             <ul className="lista text-center">
-              <li className="li__body">{show.name}</li>
+              <li className="li__body">{person.name}</li>
             </ul>
           </div>
           {/* <div className="col-md-6">
@@ -77,4 +78,4 @@ function App() {
   );
 }
 
-export default App;
+export default People;
