@@ -23,24 +23,31 @@ function Shows() {
         onSearchChange={(e) => setSearch(e.target.value)}
       />
       <h1 className="text-center">Listado Shows</h1>
-      {filterShow.map((show) => (
-        <li key={show.id} className="li__body">
-          <NavLink
-            to={`people/${show.id}`}
-          >
-            {show.name ? (
-              <>
-                {show.name}
-                {' '}
-                {show.id}
-              </>
-            ) : (
-              <i>No Name</i>
-            )}
-            {' '}
-          </NavLink>
-        </li>
-      ))}
+      <div className="row">
+        <div className="col-md-6">
+          <ul className="lista text-center">
+
+            {filterShow.map((show) => (
+              <li key={show.id} className="li__body">
+                <NavLink
+                  to={`${show.id}`}
+                >
+                  {show.name ? (
+                    <>
+                      {show.name}
+                      {' '}
+                      {show.id}
+                    </>
+                  ) : (
+                    <i>No Name</i>
+                  )}
+                  {' '}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
