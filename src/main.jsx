@@ -10,11 +10,11 @@ import ErrorPage from './error-page';
 import People from './routes/People';
 import FindPeople, {
   loader as peopleLoader,
-} from './routes/findPeople';
+} from './routes/FindPeople';
 import Shows from './routes/Shows';
 import FindShow, {
   loader as showLoader,
-} from './routes/findShow';
+} from './routes/FindShow';
 import Root from './routes/Root';
 
 // Declaramos el router

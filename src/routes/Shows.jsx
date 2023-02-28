@@ -3,10 +3,10 @@ import {
 } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import Card from 'react-bootstrap/Card';
 import getShows from '../services/shows';
 import '../style.css';
 import SearchBox from '../components/SearchBox';
-import Navbar from '../components/Navbar';
 
 function Shows() {
   const [search, setSearch] = useState('');
@@ -17,36 +17,24 @@ function Shows() {
   const filterShow = shows.filter((show) => show.name.toLowerCase().includes(search.toLowerCase()));
   return (
     <div>
-      <Navbar />
       <SearchBox
         placeholder="Búsqueda People"
         onSearchChange={(e) => setSearch(e.target.value)}
       />
       <h1 className="text-center">Listado Shows</h1>
       <div className="row">
-        <div className="col-md-6">
-          <ul className="lista text-center">
-
-            {filterShow.map((show) => (
-              <li key={show.id} className="li__body">
-                <NavLink
-                  to={`${show.id}`}
-                >
-                  {show.name ? (
-                    <>
-                      {show.name}
-                      {' '}
-                      {show.id}
-                    </>
-                  ) : (
-                    <i>No Name</i>
-                  )}
-                  {' '}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {filterShow.map((show) => (
+          <Card className="carta" key={show.id}>
+            <NavLink
+              to={`${show.id}`}
+            >
+              <Card.Img className="imagen" variant="top" src={show.image ? show.image.original : 'src\\img\\no-image.jpg'} />
+              <Card.Body>
+                <Card.Title className="texto-carta">{show.name}</Card.Title>
+              </Card.Body>
+            </NavLink>
+          </Card>
+        ))}
       </div>
     </div>
   );

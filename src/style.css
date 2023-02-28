@@ -58,3 +58,18 @@
   padding: 2rem;
   text-align: center;
 }
+
+.carta{
+  width:23%;
+  margin: 10px;
+}
+
+.imagen{
+  width: 200px;
+  height: 300px;
+}
+
+.texto-carta:link{
+  color:black;
+  text-decoration: none;
+}

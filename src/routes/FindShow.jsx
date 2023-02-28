@@ -2,6 +2,10 @@ import React from 'react';
 import {
   useLoaderData,
 } from 'react-router-dom';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 import { getShow } from '../services/shows';
 
 export async function loader({ params }) {
@@ -25,15 +29,46 @@ export default function FindShow() {
           <img
             key={show.id}
             src={show.image.medium || null}
+            alt=""
           />
         </div>
         <div className="col-md-6">
-          <h3 className="text-center"><strong>Información</strong></h3>
-          <ul>
-            <li className="my-4">{show.language}</li>
-            <li className="my-4">{show.rating.average}</li>
-            <li className="my-4">{show.summary}</li>
-          </ul>
+          <Tabs
+            defaultActiveKey="info"
+            id="justify-tab-example"
+            className="mb-3"
+            justify
+          >
+            <Tab eventKey="info" title="Informacion">
+              <Table striped bordered hover>
+                <tbody>
+                  <tr>
+                    <td>Nombre</td>
+                    <td>{show.name}</td>
+                  </tr>
+                  <tr>
+                    <td>Idioma</td>
+                    <td>{show.language}</td>
+                  </tr>
+                  <tr>
+                    <td>Genero</td>
+                    <td>{show.genres}</td>
+                  </tr>
+                  <tr>
+                    <td>Estado</td>
+                    <td>{show.status}</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Tab>
+            <Tab eventKey="resumen" title="Resumen">
+              {show.summary}
+            </Tab>
+            <Tab eventKey="episodios" title="Episodios">
+              <Button variant="primary">Episodios</Button>
+            </Tab>
+          </Tabs>
+
         </div>
       </div>
     </div>
