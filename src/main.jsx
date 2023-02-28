@@ -15,6 +15,13 @@ import Shows from './routes/Shows';
 import FindShow, {
   loader as showLoader,
 } from './routes/FindShow';
+import Episodes, {
+  loader as episodeLoader,
+} from './routes/Episodes';
+import FindEpisode, {
+  loader as findEpisodeLoader,
+} from './routes/FindEpisodes';
+
 import Root from './routes/Root';
 
 // Declaramos el router
@@ -50,6 +57,16 @@ const router = createBrowserRouter([
             path: 'shows/:showId',
             element: <FindShow />,
             loader: showLoader,
+          },
+          {
+            path: 'shows/:showId/episodes',
+            element: <Episodes />,
+            loader: episodeLoader,
+          },
+          {
+            path: 'episodes/:episodeId',
+            element: <FindEpisode />,
+            loader: findEpisodeLoader,
           },
         ],
       },

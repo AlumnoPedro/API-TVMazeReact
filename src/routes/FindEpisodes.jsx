@@ -1,34 +1,33 @@
 import React from 'react';
 import {
-  useLoaderData, NavLink,
+  useLoaderData,
 } from 'react-router-dom';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
-import { getShow } from '../services/shows';
+import { getSingleEpisode } from '../services/episodes';
 
 export async function loader({ params }) {
-  const show = await getShow(params.showId);
-  if (!show) {
+  const episode = await getSingleEpisode(params.episodeId);
+  if (!episode) {
     throw new Response('', {
       status: 404,
       statusText: 'Not Found',
     });
   }
-  return show;
+  return episode;
 }
 
-export default function FindShow() {
-  const show = useLoaderData();
+export default function FindEpisode() {
+  const episode = useLoaderData();
 
   return (
     <div id="show">
       <div className="row">
         <div className="col-md-6">
           <img
-            key={show.id}
-            src={show.image.medium || null}
+            key={episode.id}
+            src={episode.image.medium || null}
             alt=""
           />
         </div>
@@ -44,32 +43,25 @@ export default function FindShow() {
                 <tbody>
                   <tr>
                     <td>Nombre</td>
-                    <td>{show.name}</td>
+                    <td>{episode.name}</td>
                   </tr>
                   <tr>
-                    <td>Idioma</td>
-                    <td>{show.language}</td>
+                    <td>Temporada</td>
+                    <td>{episode.season}</td>
                   </tr>
                   <tr>
-                    <td>Genero</td>
-                    <td>{show.genres}</td>
+                    <td>Episodio</td>
+                    <td>{episode.number}</td>
                   </tr>
                   <tr>
-                    <td>Estado</td>
-                    <td>{show.status}</td>
+                    <td>Valoracion</td>
+                    <td>{episode.rating.average}</td>
                   </tr>
                 </tbody>
               </Table>
             </Tab>
             <Tab eventKey="resumen" title="Resumen">
-              {show.summary}
-            </Tab>
-            <Tab eventKey="episodios" title="Episodios">
-              <NavLink
-                to="episodes"
-              >
-                <Button variant="primary">Episodios</Button>
-              </NavLink>
+              {episode.summary}
             </Tab>
           </Tabs>
 
