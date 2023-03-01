@@ -22,26 +22,25 @@ function People() {
     .includes(search.toLowerCase()));
   return (
     <>
-      <div>
-        <SearchBox
-          placeholder="Búsqueda People"
-          onSearchChange={(e) => setSearch(e.target.value)}
-        />
-        <h1 className="text-center">Listado People</h1>
-        <div className="row">
-          {filterPeople.map((person) => (
-            <Card className="carta" key={person.id}>
-              <NavLink
-                to={`${person.id}`}
-              >
-                <Card.Img className="imagen" variant="top" src={person.image ? person.image.original : 'src\\img\\no-image.jpg'} />
-                <Card.Body>
-                  <Card.Title className="texto-carta">{person.name}</Card.Title>
-                </Card.Body>
-              </NavLink>
-            </Card>
-          ))}
-        </div>
+      <h1 className="text-center">Listado People</h1>
+      <SearchBox
+        className="buscador"
+        placeholder="Búsqueda People"
+        onSearchChange={(e) => setSearch(e.target.value)}
+      />
+      <div className="row">
+        {filterPeople.map((person) => (
+          <Card className="carta" key={person.id}>
+            <NavLink
+              to={`${person.id}`}
+            >
+              <Card.Img className="imagen" variant="top" src={person.image ? person.image.original : 'src\\img\\no-image.jpg'} />
+              <Card.Body>
+                <Card.Title className="texto-carta">{person.name}</Card.Title>
+              </Card.Body>
+            </NavLink>
+          </Card>
+        ))}
       </div>
       <Footer />
     </>

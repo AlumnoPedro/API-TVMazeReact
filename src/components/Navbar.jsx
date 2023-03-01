@@ -1,30 +1,40 @@
 import React from 'react';
+import {
+  NavLink,
+} from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Button from 'react-bootstrap/Button';
+import '../style.css';
 
-function barraNavegacion() {
+function BarraNavegacion() {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="dark" sticky="top" expand="lg">
       <Container>
-        <Navbar.Brand href="#home"><img src="../img/tvm-header-logo.png" alt="" /></Navbar.Brand>
+        <img
+          alt=""
+          src="/src/img/tvm-header-logo.png"
+          className="d-inline-block align-top"
+        />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+            <NavLink
+              to="/"
+            >
+              <Button variant="outline-primary" className="boton">Inicio</Button>
+            </NavLink>
+            <NavLink
+              to="/shows"
+            >
+              <Button variant="outline-primary" className="boton">Shows</Button>
+            </NavLink>
+            <NavLink
+              to="/people"
+            >
+              <Button variant="outline-primary" className="boton">People</Button>
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -32,4 +42,4 @@ function barraNavegacion() {
   );
 }
 
-export default barraNavegacion;
+export default BarraNavegacion;

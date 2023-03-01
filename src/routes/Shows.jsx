@@ -18,26 +18,24 @@ function Shows() {
   const filterShow = shows.filter((show) => show.name.toLowerCase().includes(search.toLowerCase()));
   return (
     <>
-      <div>
-        <SearchBox
-          placeholder="Búsqueda People"
-          onSearchChange={(e) => setSearch(e.target.value)}
-        />
-        <h1 className="text-center">Listado Shows</h1>
-        <div className="row">
-          {filterShow.map((show) => (
-            <Card className="carta" key={show.id}>
-              <NavLink
-                to={`${show.id}`}
-              >
-                <Card.Img className="imagen" variant="top" src={show.image ? show.image.original : 'src\\img\\no-image.jpg'} />
-                <Card.Body>
-                  <Card.Title className="texto-carta">{show.name}</Card.Title>
-                </Card.Body>
-              </NavLink>
-            </Card>
-          ))}
-        </div>
+      <h1 className="text-center">Listado Shows</h1>
+      <SearchBox
+        placeholder="Búsqueda Shows"
+        onSearchChange={(e) => setSearch(e.target.value)}
+      />
+      <div className="row">
+        {filterShow.map((show) => (
+          <Card className="carta" key={show.id}>
+            <NavLink
+              to={`${show.id}`}
+            >
+              <Card.Img className="imagen" variant="top" src={show.image ? show.image.original : 'src\\img\\no-image.jpg'} />
+              <Card.Body>
+                <Card.Title className="texto-carta">{show.name}</Card.Title>
+              </Card.Body>
+            </NavLink>
+          </Card>
+        ))}
       </div>
       <Footer />
     </>
