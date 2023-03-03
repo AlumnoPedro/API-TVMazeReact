@@ -5,7 +5,6 @@ import {
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Table from 'react-bootstrap/Table';
-import { Navbar } from 'react-bootstrap';
 import { getSingleEpisode } from '../services/episodes';
 
 export async function loader({ params }) {
@@ -23,8 +22,7 @@ export default function FindEpisode() {
   const episode = useLoaderData();
 
   return (
-    <>
-      <Navbar />
+    <div className="contenedor">
       <div id="show">
         <div className="row">
           <div className="col-md-6">
@@ -71,6 +69,6 @@ export default function FindEpisode() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -6,7 +6,6 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-import { Navbar } from 'react-bootstrap';
 import { getShow } from '../services/shows';
 
 export async function loader({ params }) {
@@ -24,8 +23,7 @@ export default function FindShow() {
   const show = useLoaderData();
 
   return (
-    <>
-      <Navbar />
+    <div className="contenedor">
       <div id="show">
         <div className="row">
           <div className="col-md-6">
@@ -79,6 +77,6 @@ export default function FindShow() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

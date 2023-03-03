@@ -10,7 +10,7 @@ import '../style.css';
 
 function BarraNavegacion() {
   return (
-    <Navbar bg="dark" sticky="top" expand="lg">
+    <Navbar bg="dark" fixed="top" expand="lg">
       <Container>
         <img
           alt=""
@@ -19,7 +19,7 @@ function BarraNavegacion() {
         />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto listaBotones">
             <NavLink
               to="/"
             >

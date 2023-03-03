@@ -17,7 +17,7 @@ function Shows() {
   }, []);
   const filterShow = shows.filter((show) => show.name.toLowerCase().includes(search.toLowerCase()));
   return (
-    <>
+    <div className="contenedor">
       <h1 className="text-center">Listado Shows</h1>
       <SearchBox
         placeholder="Búsqueda Shows"
@@ -38,7 +38,7 @@ function Shows() {
         ))}
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

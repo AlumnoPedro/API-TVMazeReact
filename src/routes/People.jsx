@@ -21,7 +21,7 @@ function People() {
   const filterPeople = people.filter((person) => person.name.toLowerCase()
     .includes(search.toLowerCase()));
   return (
-    <>
+    <div className="contenedor">
       <h1 className="text-center">Listado People</h1>
       <SearchBox
         className="buscador"
@@ -43,7 +43,7 @@ function People() {
         ))}
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
