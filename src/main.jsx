@@ -23,6 +23,7 @@ import FindEpisode, {
 } from './routes/FindEpisodes';
 
 import Root from './routes/Root';
+import Home from './routes/Home';
 
 // Declaramos el router
 const router = createBrowserRouter([
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
         children: [
           // Cada uno de sus hijos tendrá una ruta, el nombre de su elemento,
           // su cargador (Loader) y definimos su accion (Action).
+          {
+            path: '/',
+            element: <Home />,
+          },
           {
             path: 'people',
             element: <People />,
