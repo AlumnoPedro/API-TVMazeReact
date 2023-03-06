@@ -8,6 +8,7 @@ import getShows from '../services/shows';
 import '../style.css';
 import SearchBox from '../components/SearchBox';
 import Footer from '../components/Footer';
+import Pagination from '../components/Pagination';
 
 function Shows() {
   const [search, setSearch] = useState('');
@@ -16,6 +17,13 @@ function Shows() {
     getShows().then((series) => setShows(series));
   }, []);
   const filterShow = shows.filter((show) => show.name.toLowerCase().includes(search.toLowerCase()));
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(8);
+
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = filterShow.slice(firstPostIndex, lastPostIndex);
+
   return (
     <div className="contenedor">
       <h1 className="text-center">Listado Shows</h1>
@@ -24,7 +32,7 @@ function Shows() {
         onSearchChange={(e) => setSearch(e.target.value)}
       />
       <div className="row">
-        {filterShow.map((show) => (
+        {currentPosts.map((show) => (
           <Card className="carta" key={show.id}>
             <NavLink
               to={`${show.id}`}
@@ -37,6 +45,11 @@ function Shows() {
           </Card>
         ))}
       </div>
+      <Pagination
+        totalPosts={filterShow.length}
+        postsPerPage={postsPerPage}
+        setCurrentPage={setCurrentPage}
+      />
       <Footer />
     </div>
   );

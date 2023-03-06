@@ -11,6 +11,7 @@ import {
 import '../style.css';
 import SearchBox from '../components/SearchBox';
 import Footer from '../components/Footer';
+import Pagination from '../components/Pagination';
 
 function People() {
   const [search, setSearch] = useState('');
@@ -20,6 +21,13 @@ function People() {
   }, []);
   const filterPeople = people.filter((person) => person.name.toLowerCase()
     .includes(search.toLowerCase()));
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(8);
+
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = filterPeople.slice(firstPostIndex, lastPostIndex);
+
   return (
     <div className="contenedor">
       <h1 className="text-center">Listado People</h1>
@@ -29,7 +37,7 @@ function People() {
         onSearchChange={(e) => setSearch(e.target.value)}
       />
       <div className="row">
-        {filterPeople.map((person) => (
+        {currentPosts.map((person) => (
           <Card className="carta" key={person.id}>
             <NavLink
               to={`${person.id}`}
@@ -42,6 +50,11 @@ function People() {
           </Card>
         ))}
       </div>
+      <Pagination
+        totalPosts={filterPeople.length}
+        postsPerPage={postsPerPage}
+        setCurrentPage={setCurrentPage}
+      />
       <Footer />
     </div>
   );
