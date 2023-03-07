@@ -4,7 +4,7 @@ import {
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Card from 'react-bootstrap/Card';
-import getShows from '../services/shows';
+import getShows, { getShowByName } from '../services/shows';
 import '../style.css';
 import SearchBox from '../components/SearchBox';
 import Footer from '../components/Footer';
@@ -16,13 +16,20 @@ function Shows() {
   useEffect(() => {
     getShows().then((series) => setShows(series));
   }, []);
-  const filterShow = shows.filter((show) => show.name.toLowerCase().includes(search.toLowerCase()));
+  useEffect(() => {
+    getShows().then((series) => setShows(series));
+  }, [search === '']);
+  useEffect(() => {
+    getShowByName(search)
+      .then((series) => series.map((show) => show.show))
+      .then((series) => setShows(series));
+  }, [search]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(8);
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = filterShow.slice(firstPostIndex, lastPostIndex);
+  const currentPosts = shows.slice(firstPostIndex, lastPostIndex);
 
   return (
     <div className="contenedor">
@@ -46,7 +53,7 @@ function Shows() {
         ))}
       </div>
       <Pagination
-        totalPosts={filterShow.length}
+        totalPosts={shows.length}
         postsPerPage={postsPerPage}
         setCurrentPage={setCurrentPage}
       />
