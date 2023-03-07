@@ -4,10 +4,7 @@ import {
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Card from 'react-bootstrap/Card';
-import {
-  getPeople,
-}
-  from '../services/people';
+import getPeople, { getPeopleByName } from '../services/people';
 import '../style.css';
 import SearchBox from '../components/SearchBox';
 import Footer from '../components/Footer';
@@ -19,14 +16,20 @@ function People() {
   useEffect(() => {
     getPeople().then((personas) => setPeople(personas));
   }, []);
-  const filterPeople = people.filter((person) => person.name.toLowerCase()
-    .includes(search.toLowerCase()));
+  useEffect(() => {
+    getPeople().then((personas) => setPeople(personas));
+  }, [search === '']);
+  useEffect(() => {
+    getPeopleByName(search)
+      .then((personas) => personas.map((person) => person.person))
+      .then((personas) => setPeople(personas));
+  }, [search]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(8);
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = filterPeople.slice(firstPostIndex, lastPostIndex);
+  const currentPosts = people.slice(firstPostIndex, lastPostIndex);
 
   return (
     <div className="contenedor">
@@ -51,7 +54,7 @@ function People() {
         ))}
       </div>
       <Pagination
-        totalPosts={filterPeople.length}
+        totalPosts={people.length}
         postsPerPage={postsPerPage}
         setCurrentPage={setCurrentPage}
       />
