@@ -12,6 +12,7 @@ function Pagination({ totalPosts, postsPerPage, setCurrentPage }) {
             pages.map((page) => (
               <button
                 type="button"
+                className="botonPaginacion"
                 key={page}
                 onClick={() => setCurrentPage(page)}
               >

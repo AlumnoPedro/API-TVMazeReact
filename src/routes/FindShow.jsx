@@ -7,6 +7,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { getShow } from '../services/shows';
+import '../style.css';
 
 export async function loader({ params }) {
   const show = await getShow(params.showId);

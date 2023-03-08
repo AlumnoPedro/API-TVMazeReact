@@ -5,7 +5,6 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 // Importamos desde las rutas del proyecto todas las funciones sobre los contactos
-import './index.css';
 import ErrorPage from './error-page';
 import People from './routes/People';
 import FindPeople, {

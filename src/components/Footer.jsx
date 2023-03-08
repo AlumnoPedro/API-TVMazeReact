@@ -16,10 +16,18 @@ function Footer() {
                 <br />
                 <p>Página realizada a través de la api ApiTVMaze por Pedro Díaz y Raúl García</p>
                 <div className="footer_social_area">
-                  <a href="https://es-es.facebook.com/" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook"><i className="fa fa-facebook" /></a>
-                  <a href="https://www.pinterest.es/" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pinterest"><i className="fa fa-pinterest" /></a>
-                  <a href="https://www.skype.com/es/" data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype"><i className="fa fa-skype" /></a>
-                  <a href="https://twitter.com/" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter"><i className="fa fa-twitter" /></a>
+                  <a href="https://es-es.facebook.com/" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
+                    <i className="fa fa-facebook" />
+                  </a>
+                  <a href="https://www.pinterest.es/" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pinterest">
+                    <i className="fa fa-pinterest" />
+                  </a>
+                  <a href="https://www.skype.com/es/" data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype">
+                    <i className="fa fa-skype" />
+                  </a>
+                  <a href="https://twitter.com/" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
+                    <i className="fa fa-twitter" />
+                  </a>
                 </div>
               </div>
             </div>

@@ -129,3 +129,14 @@
   width: 590px;
   height: 700px;
 }
+
+.botonPaginacion {
+  background-color: #1652F0;
+  border: 0;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-size: 20px;
+  padding: 5px;
+  text-decoration: none;
+  margin: 2px;
+}

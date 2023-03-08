@@ -6,6 +6,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Table from 'react-bootstrap/Table';
 import { getSingleEpisode } from '../services/episodes';
+import '../style.css';
 
 export async function loader({ params }) {
   const episode = await getSingleEpisode(params.episodeId);

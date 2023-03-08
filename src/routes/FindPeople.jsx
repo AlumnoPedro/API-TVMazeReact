@@ -6,6 +6,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Table from 'react-bootstrap/Table';
 import { getPerson } from '../services/people';
+import '../style.css';
 
 export async function loader({ params }) {
   const person = await getPerson(params.peopleId);
@@ -22,7 +23,7 @@ export default function FindPeople() {
   const person = useLoaderData();
 
   return (
-    <div id="contenedor">
+    <div className="contenedor">
       <div id="contact">
         <div className="row">
           <div className="col-md-6">
@@ -60,9 +61,6 @@ export default function FindPeople() {
                     </tr>
                   </tbody>
                 </Table>
-              </Tab>
-              <Tab eventKey="profile" title="Mas Informacion">
-                asdf
               </Tab>
 
             </Tabs>
