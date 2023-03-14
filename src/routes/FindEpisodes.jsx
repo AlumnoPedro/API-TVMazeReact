@@ -31,6 +31,7 @@ export default function FindEpisode() {
               key={episode.id}
               src={episode.image.medium || null}
               alt=""
+              className="imagenEpisodio"
             />
           </div>
           <div className="col-md-6">

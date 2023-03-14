@@ -3,8 +3,8 @@ const URL1 = 'https://api.tvmaze.com/search/shows';
 
 export default async function getShows() {
   const respuesta = await fetch(`${URL}`);
-  const peliculas = await respuesta.json();
-  return peliculas;
+  const series = await respuesta.json();
+  return series;
 }
 
 export async function getShow(id) {

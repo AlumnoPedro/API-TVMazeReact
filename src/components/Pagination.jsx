@@ -2,21 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Pagination({ totalPosts, postsPerPage, setCurrentPage }) {
-  const pages = [];
+  const paginas = [];
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i += 1) {
-    pages.push(i);
+    paginas.push(i);
   }
   return (
     <div>
       {
-            pages.map((page) => (
+            paginas.map((pagina) => (
               <button
                 type="button"
                 className="botonPaginacion"
-                key={page}
-                onClick={() => setCurrentPage(page)}
+                key={pagina}
+                onClick={() => setCurrentPage(pagina)}
               >
-                {page}
+                {pagina}
               </button>
             ))
         }

@@ -22,18 +22,24 @@ function BarraNavegacion() {
           <Nav className="me-auto listaBotones">
             <NavLink
               to="/"
+              // eslint-disable-next-line no-nested-ternary
+              className={({ isActive, isPending }) => (isPending ? '' : isActive ? 'pending' : '')}
             >
-              <Button variant="outline-primary" className="boton">Inicio</Button>
+              <Button className="listaBotones__boton">Inicio</Button>
             </NavLink>
             <NavLink
               to="/shows"
+              // eslint-disable-next-line no-nested-ternary
+              className={({ isActive, isPending }) => (isPending ? '' : isActive ? 'pending' : '')}
             >
-              <Button variant="outline-primary" className="boton">Shows</Button>
+              <Button className="listaBotones__boton">Shows</Button>
             </NavLink>
             <NavLink
               to="/people"
+              // eslint-disable-next-line no-nested-ternary
+              className={({ isActive, isPending }) => (isPending ? '' : isActive ? 'pending' : '')}
             >
-              <Button variant="outline-primary" className="boton">People</Button>
+              <Button className="listaBotones__boton">People</Button>
             </NavLink>
           </Nav>
         </Navbar.Collapse>

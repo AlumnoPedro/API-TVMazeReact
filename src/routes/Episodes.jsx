@@ -22,7 +22,7 @@ export async function loader({ params }) {
 export default function FindShow() {
   const episodes = useLoaderData();
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(8);
+  const [postsPerPage] = useState(16);
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;

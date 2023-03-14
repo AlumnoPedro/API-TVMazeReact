@@ -34,13 +34,13 @@ function Home() {
                       <i className="fa fa-github" />
                     </a>
                   </div>
-                  <a href="/shows" className="btn rey-btn mt-3">Ver más</a>
+                  <a href="/shows" className="btn reybtn mt-3">Ver más</a>
                 </div>
               </div>
             </div>
             <div className="col-lg-6 mt-5 mt-lg-0">
               <figure className="potoaboutwrap">
-                <img className="imagen_medidas" src="src/img/series.jpg" alt="potoabout" />
+                <img className="imagenMedidas" src="src/img/series.jpg" alt="potoabout" />
               </figure>
             </div>
           </div>
